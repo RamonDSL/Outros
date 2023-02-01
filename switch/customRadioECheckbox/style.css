@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    padding: 10px;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.form-group label {
+    cursor: pointer;
+}
+
+.radio, .checkbox {
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid turquoise;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox {
+    border-radius: 0;
+}
+
+.radio:before, .checkbox:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: turquoise;
+    border-radius: 50%;
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+
+.checkbox:before {
+    width: 8px;
+    height: 12px;
+    border-radius: 0;
+    background: none;
+    border-right: 3px solid turquoise;
+    border-bottom: 3px solid turquoise;
+    transform: rotate(45deg);
+    top: 3px;
+}
+
+.radio:checked:before, .checkbox:checked:before {
+    opacity: 1;
+}
+
+.radio:focus, .checkbox:focus {
+    box-shadow: 0 0 6px turquoise;
+}

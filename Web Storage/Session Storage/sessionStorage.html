@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+</head>
+<body>
+    <!--
+        diferença entre Session Storage e Local storage é que o segundo mesmo que fechar o browser, desligue o PC o dado continua lá, já o Session Storage não quando fechar o browser ele é deletado.
+    -->
+
+    <input type="text" size="20" maxlength="20" id="nome"><br><br>
+    <button id="btnP2">Página 2</button>
+    <button id="btnP3">Página 3</button>
+    <button id="btnLimpar">limpar session</button>
+
+    <script>
+
+        function pagina(pg) {
+            sessionStorage.nome = document.getElementById('nome').value
+            window.location.assign("p"+pg+".html")
+        }
+
+        function inicia() {
+            document.getElementById('btnP2').addEventListener('click', function() {
+                pagina(2)
+            })
+            document.getElementById('btnP3').addEventListener('click', function() {
+                pagina(3)
+            })
+            document.getElementById('btnLimpar').addEventListener('click', function() {
+                sessionStorage.clear()
+            })
+        }
+
+        window.addEventListener('load', inicia)
+    </script>
+</body>
+</html>

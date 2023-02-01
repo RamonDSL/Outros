@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <style>
+        #dados {
+            display: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border: 1px solid #000;
+            background-color: #888;
+            padding: 20x;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <p>Local Storage Curso de Javascript</p>
+    <p id="painel"></p>
+
+    <button onclick="mostraConf()">Configurações</button>
+    
+    <form name="dados" id="dados">
+        <label for="nome">Nome</label><br>
+        <input type="text" id="nome" size="20"><br><br>
+
+        <label for="corFundo">Cor Fundo:</label><br>
+        <input type="radio" name="corF" onclick="defineCor(1, '#000')">Preto <br>
+        <input type="radio" name="corF" onclick="defineCor(1, '#fff')">Branco <br>
+        <input type="radio" name="corF" onclick="defineCor(1, 'red')">Vermelho <br>
+        <input type="radio" name="corF" onclick="defineCor(1, 'yellow')">Amarelo <br>
+        <input type="radio" name="corF" onclick="defineCor(1, 'blue')">Azul <br><br>
+
+        <label>Cor texto:</label><br>
+        <input type="radio" name="cort" onclick="defineCor(2, '#000')">Preto <br>
+        <input type="radio" name="cort" onclick="defineCor(2, '#fff')">Branco <br>
+
+        <input type="button" value="Gravar" onclick="gravar()">        
+    </form>
+
+    <script>
+        let vcorF; 
+        let vcorT;
+        let vnome;
+        const form = document.getElementById('dados')
+
+        function defineCor(opc, cor) {
+            if(opc == 1) {
+                document.body.style.backgroundColor = cor 
+                vcorF = cor
+            } else {
+                document.body.style.color = cor
+                vcorT = cor
+            }
+        }
+
+        function gravar() {
+            vnome = document.getElementById('nome').value
+            localStorage.vcorF = vcorF 
+            localStorage.vcorT = vcorT 
+            localStorage.vnome = vnome             
+            form.style.display = "none"
+        }
+
+        function mostraConf() {
+            form.style.display = "block"
+        }
+
+        if (localStorage.vnome) {
+            vcorF = localStorage.vcorF
+            vcorT = localStorage.vcorT
+            vnome = localStorage.vnome
+
+            defineCor(1, vcorF)
+            defineCor(2, vcorT)
+            document.getElementById('painel').innerHTML = 'Bem vindo ' + vnome
+        }
+    </script>
+</body>
+</html>
