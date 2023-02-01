@@ -1,0 +1,6 @@
+input[type=range]{
+    /* reset appeareance */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}

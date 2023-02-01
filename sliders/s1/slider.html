@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        #divslider {
+            width: 1000px;
+            height: 300px;
+            border: 1px solid #000;
+            overflow: hidden;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <script>
+        const imgs = []
+        let slider;
+        let imgAtual;
+        let maxImg;
+        let tmp;
+
+        function preCarregamento() {
+            let s = 1
+            for (let i=0; i<5; i++) {
+                imgs[i] = new Image()
+                imgs[i].src =  "imgs/s"+s+".jpg"
+                s++
+            }
+        }
+
+        function carregarImg(img) {
+            slider.style.backgroundImage = "url('"+imgs[img].src+"')"
+        }
+        
+        function iniciar() {
+            preCarregamento()
+            imgAtual = 0
+            maxImg = imgs.length-1
+            slider = document.getElementById('divslider')
+            carregarImg(imgAtual)
+            tmp = setInterval(troca, 3000)
+        }
+
+        function troca() {
+            imgAtual++
+            if (imgAtual > maxImg) {
+                imgAtual = 0
+            }
+            carregarImg(imgAtual)
+        }
+
+        window.addEventListener('load', iniciar)
+    </script>
+</head>
+<body>
+    <div id="divslider"></div>
+</body>
+</html>

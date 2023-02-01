@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Event</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .invalido {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Evento Submit</h1>
+
+    <form action="" id="form">
+        <p>
+            <div><input type="text" id="curso">Curso</div>
+            <div><input type="text" id="duracao" re>Duração</div>
+            <button type="submit">Enviar Formulário</button>
+        </p>
+        <p>
+            <input type="range" name="rang" id="rang" min="1" max="50"><br>
+            <span></span>
+        </p>
+    </form>
+
+    <script>
+        const form = document.querySelector('#form')
+        
+        document.querySelector('input#rang').addEventListener('input', () => {
+            document.querySelector('span').innerHTML = document.querySelector('input#rang').value
+        })
+        
+
+
+        form.addEventListener('submit', () => {
+            let curso = document.querySelector('#curso')
+            //console.log(curso);
+            if (curso.value == '') {
+                curso.classList.add('invalido')
+                event.preventDefault()
+            }
+            
+        }) 
+    </script>
+</body>
+</html>

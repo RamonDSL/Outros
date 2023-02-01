@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style-checkbox.css"> -->
+    <link rel="stylesheet" href="style-js.css">
+    <!-- <link rel="stylesheet" href="style-focus-within.css"> -->
+    <title>DropDown</title>
+    <script src="app.js" defer></script> <!--defer é para o js só carregar depois do html-->
+</head>
+<body>
+    <!-- / raíz -->
+    <header class="header">
+        <a href="/" class="logo">Tiger Codes</a>
+        <nav class="nav"> 
+            <!-- em aria menus iterativos que revelam conteúdo quando acionados são considerados popup -->
+            <!-- Método do checkbox
+            <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
+            <label for="checkbox" class="label-menu">Menu<span class="hamburguer"></span></label> -->
+            <button class="btn-menu" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+                <span class="hamburguer"></span>
+            </button>
+            <ul class="menu" role="menu">
+                <li><a href="/">Início</a></li>
+                <li><a href="/">Sobre</a></li>
+                <li><a href="/">Contato</a></li>
+                <li><a href="/">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

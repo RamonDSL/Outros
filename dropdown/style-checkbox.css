@@ -1,0 +1,120 @@
+:root {
+    --royal-blue-light: #404eed;
+    --royal-blue-dark: #3946d4;
+    --white: #fff;
+    --background: #e2e3e9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--background);
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--royal-blue-light);
+    padding: 1rem;
+    height: 6rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.menu a {
+    display: block;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.menu a:hover {
+    background: var(--royal-blue-dark);
+}
+
+/*Truque do checkbox*/
+.label-menu,
+.checkbox {
+    display: none;
+}
+
+/*deixar o menu invi e o label visivel quando for mobile*/
+@media (max-width: 600px) {
+    .menu {
+        display: block;
+        position: absolute;
+        top: 4.7rem; /*valor equivalente ao header*/
+        left: 0;
+        background: var(--royal-blue-light);
+        text-align: center;
+        width: 100%; /*pq com o absolute o item perde sua largura de ponta a ponta*/       
+        height: 0; /*para fazer uma animação até a altura total dele*/ 
+        z-index: 1;/*garantir que ele fique por cima de todos os itens*/
+        visibility: hidden; /*escoonder o item*/
+        overflow-y: hidden; /*não deixar o menu transbordar e só aparecer os itens conforme a altura aumenta*/
+        transition: 0.5s;/*css não consegue aplicar uma transição para um elemento que sai de display none para block*/
+    }
+    .menu a {
+        padding: 1rem 0;
+        margin-inline: 1rem;
+        border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.30);
+        border-radius: 0;
+    }
+    .label-menu {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--white);
+        padding-block: 1rem;
+        cursor: pointer;
+    }
+    .hamburguer {
+        border-top: 0.125rem solid;
+        width: 1.25rem;
+    }
+    .hamburguer::before,
+    .hamburguer::after {
+        position: relative;
+        content: "";
+        display: block;
+        width: 1.25rem;
+        height: 0.125rem;
+        background: currentColor; /*representa cor atual herdada*/
+        margin-top: 0.3125rem;
+        transition: .3s;
+    }
+    .checkbox:checked ~ .menu {
+        visibility: visible;
+        height: calc(100vh - 6rem); /*altura total - a altura do header*/
+        overflow-y: auto; /*usar auto pq se a lista de menus for maior o uuário ainda vai poder girar o scroll e vê-los*/
+    }
+    .checkbox:checked ~ .label-menu .hamburguer {
+        border-top-color: transparent;/*tirar a primeira linha do hamburguer*/
+    }
+    .checkbox:checked ~ .label-menu .hamburguer::before {
+        transform: rotate(135deg); /*rotacionar a segunda linha/ derrubar o lado direito dela para baixo*/
+    }
+    .checkbox:checked ~ .label-menu .hamburguer::after {
+        transform: rotate(-135deg); /*rotacionar a terceira linha/ derrubar o lado esquerdo dela para baixo*/
+        top: -0.4375rem; /* */
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        const img = document.createElement('img')
+        const body = document.querySelector('body')
+        fetch('1.png')
+        .then(response => response.blob())
+        .then(data => {
+            const url = URL.createObjectURL(data)
+            img.src = url
+            body.appendChild(img)
+        })*/
+        
+
+        async function fet() {
+            let obj = {
+                "teste": 2,
+                "teste2": "teste",
+            }
+            obj = JSON.stringify(obj)
+            const response = await fetch('teste.json', {
+                method: "POST",
+                body: obj,
+            })
+            const data = await response.json()
+            console.log(data);
+        }
+        fet()
+    </script>
+</body>
+</html>
